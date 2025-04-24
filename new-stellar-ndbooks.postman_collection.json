@@ -1,0 +1,1541 @@
+{
+	"info": {
+		"_postman_id": "bcdac1d5-6205-4881-b0ce-5451580013f5",
+		"name": "stellar-ndbooks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29375150",
+		"_collection_link": "https://hi2222-8133.postman.co/workspace/stellar-postman~e9a8cf73-38ff-4f19-9783-0ccdd8369c25/collection/29375150-bcdac1d5-6205-4881-b0ce-5451580013f5?action=share&source=collection_link&creator=29375150"
+	},
+	"item": [
+		{
+			"name": "auth(login/signup)",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//     \"email\": \"rajeshwaris1231@gmail.com\",\r\n//     \"password\": \"admin@123\"\r\n// }\r\n// {\r\n//     \"email\": \"nithesh.rl02@gmail.com\",\r\n//     \"password\": \"justinrl02\"\r\n// }\r\n{\r\n    \"email\": \"muthaiya@stellarsolutions.org\",\r\n    \"password\": \"admin@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/auth/login",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh-token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQ2MmIyMzQ1MTdlMGE0NDQyMWZlYiIsInVzZXJuYW1lIjoibXV0aGFpeWFzYW5qYXkiLCJlbWFpbCI6Im11dGhhaXlhQHN0ZWxsYXJzb2x1dGlvbnMub3JnIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQxNzg2ODM2LCJleHAiOjE3NDE4NzMyMzZ9.hHdhP0q1qmkcBtga5t0-Rl1ORfyTP98VTdeu_PJYC2w\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/auth/refresh-token",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forget-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"muthaiya@stellarsolutions.org\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev}}/api/auth/forget-password",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"forget-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset-password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImZKOG5RT1BhYTRtOElER3F2VmVIVHpmb3d1clpwd2ZmRFB2bkZ3azM5NmMiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3Mzg4NzA2MDIsIm5iZiI6MTczODg2NzAwMiwidmVyIjoiMS4wIiwiaXNzIjoiaHR0cHM6Ly90cmFkeGxpbmtvcmcuYjJjbG9naW4uY29tLzM2Mjg0NTEwLTU3ZDItNGUyOC1iN2UxLTU1ZDc5Y2M4NDVmMC92Mi4wLyIsInN1YiI6ImZmZWNmZDg3LTlmMDktNDhhYi1iM2M2LTAxYTA2NWIwZjhmZiIsImF1ZCI6IjNkMDhmMmFiLWY1MTMtNDBiYy05NjUzLTJiMzg0ODNlYjZiNSIsImFjciI6ImIyY18xYV9yZW1vdGVwcm9maWxlX3NpZ251cF9zaWduaW5fcHJvZCIsIm5vbmNlIjoiNTZkNThmZTYtZTRlNy00YjAzLTg3OGItYmJlNDJmYWYyMTNlIiwiaWF0IjoxNzM4ODY3MDAyLCJhdXRoX3RpbWUiOjE3Mzg4NjY5ODIsImVtYWlsIjoidGVjaC1vcHNAdHJhZHhsaW5rLmNvbSIsImNvdW50cnkiOiJJTiIsIm1lbWJlcl9pZCI6IjZhY2FlMDIyLTM0NmEtNGUwNS05ZGQ3LWJmOTBhZGRhMWQwNiIsImNvbXBhbnlfbWVtYmVyX2lkIjoiZjVkMDc5ZmYtYWE0NS00ZjVjLWI4ZTctNmM3YmI0NmU5YWVhIiwiY2hhdF90b2tlbiI6ImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUoxSWpveE1qVXhPVEUxT1RZc0luWWlPakVzSW1VaU9qRTNNemswTmpZNU5ESjkucVJ0d3gwdkpyRURqemxjMERKUHVNci15aW9LdjlYWWR5c2VvRlFSb1ZqNCIsInN1YnNjcmlwdGlvbl90eXBlIjoiRlJFRSIsImNvbXBhbnlfbmFtZSI6IlRyYWRlQ29zIExpbWl0ZWQiLCJjb21wYW55X3R5cGUiOiJUUkFERVIiLCJnaXZlbl9uYW1lIjoiT3BlcmF0aW9ucyIsImZhbWlseV9uYW1lIjoiVHJhZGVDb3MiLCJhdF9oYXNoIjoiNkt1LW5Ka3d3Sll4ZG9paXdzY1hOQSJ9.OVeDv9J7P6F4bT3GCaw2CQNgmIdKPN0vwaWvyzoAisxlYHNy8PbNqW0Oj12F4gAuT8QagjQJ0N2sRr4XjFGjUi61-WWW7AH2wA4txhp5HZFQVwus8t-ueydsNJj2shilP4jo4BzTa3a45dM-Cqu0cJkToep9sE_cb6HUZkhf2qK-W08GndIpbEfaqHscURQ1mhIdNjpyEW7GweJwR0s87Af1n4EkypFlTBd1xpUNHD79eSyTaFH9m_aJQsx4FHWOsJwzdWQ0qokPNCZSUUX1q1WLTUx6qCyt-2tw1hqsKHfJ8Bhh3you24bOyNgu0-rlFt-nXVKTOB9NSTd0WTtUUg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11dGhhaXlhQHN0ZWxsYXJzb2x1dGlvbnMub3JnIiwiaWF0IjoxNzQxMDkxMDM4LCJleHAiOjE3NDEwOTQ2Mzh9.i4G_iiUYDJTci-VzL0hGyWkhbRh8gIwMp9xyItPgQoY\",\r\n  \"newPassword\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/auth/reset-password",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change-password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OTNlYzYxODJmMGFjNDI1MGZhMjBjZSIsInJvbGUiOiJzdGFmZiIsImlhdCI6MTczNzgxODQyNCwiZXhwIjoxNzM3ODIyMDI0fQ.3HgtYULrRWmhewMIi2oMf6c_uZZPOVXogMJlZVpV7Ag",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"muthaiya@stellarsolutions.org\",\r\n    \"oldPassword\": \"test@123\",\r\n    \"newPassword\": \"admin@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/auth/change-password",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send-otp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"muthaiya\",\r\n    \"email\": \"muthaiya@stellarsolutions.org\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev}}/api/auth/send-otp",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"send-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify-otp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"otp\": \"837226\",\r\n    \"email\": \"muthaiya@stellarsolutions.org\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/auth/verify-otp",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"verify-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"muthaiya@stellarsolutions.org\",\r\n    \"password\": \"admin@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/auth/create-password",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"create-password"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "getall",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev1}}/api/users/",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateByUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"companyName\": \"Stellar Solutions\",\r\n    \"phoneNumber\": \"+91 8675954867\",\r\n    \"address\": [\r\n        {\r\n            \"primary\": false,\r\n            \"label\": \"home\",\r\n            \"houseAddress\": \"123 New Street\",\r\n            \"city\": \"Metropolis\",\r\n            \"state\": \"NY\",\r\n            \"country\": \"USA\",\r\n            \"zipCode\": \"10001\",\r\n            \"_id\": \"67ad9ac27b764d8410a19cea\"\r\n        },\r\n        {\r\n            \"primary\": true,\r\n            \"label\": \"professions\",\r\n            \"houseAddress\": \"456 Work\",\r\n            \"city\": \"Metropolis\",\r\n            \"state\": \"NY\",\r\n            \"country\": \"USA\",\r\n            \"zipCode\": \"10002\",\r\n            \"_id\": \"67ad9ac27b764d8410a19ceb\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev}}/api/users/67c7d5bd3269fc55b1c0e01d",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"67c7d5bd3269fc55b1c0e01d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "contact us",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YzdkNWJkMzI2OWZjNTViMWMwZTAxZCIsInVzZXJuYW1lIjoiTmRCb29rcyIsImVtYWlsIjoicmFqZXNod2FyaXMxMjMxQGdtYWlsLmNvbSIsInJvbGUiOiJidXllciIsImlhdCI6MTc0MTE2ODg2MCwiZXhwIjoxNzQxMTcyNDYwfQ.f1TM-H_XmCzVb092jEJ79f6CqTzr7-BrHxCPjuxBcSo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"67c7d5bd3269fc55b1c0e01d\",\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"johndoe@example.com\",\r\n  \"subject\": \"Inquiry about product\",\r\n  \"message\": \"I would like to know more about the features of your product.\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/users/contactus",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"contactus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByRoles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev1}}/api/users/roles?role=admin",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"roles"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "admin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev1}}/api/users/67b467f0ecabe37dd6e1e9f0",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"67b467f0ecabe37dd6e1e9f0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{stellar}}/api/users/67934145b0f4fc01641f6ddb",
+							"host": [
+								"{{stellar}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"67934145b0f4fc01641f6ddb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove address",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"addressId\": \"67ad974290d7aa5dac3450a7\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{stellar}}/api/users/address/67a9db09d19a639220f37857",
+							"host": [
+								"{{stellar}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"address",
+								"67a9db09d19a639220f37857"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "getall products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev}}/api/products?limit=1700",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "Sasthira",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "self-help",
+									"disabled": true
+								},
+								{
+									"key": "publisher",
+									"value": "Jaico Publishing House",
+									"disabled": true
+								},
+								{
+									"key": "bookName",
+									"value": "பஹ்வ்ருசோபநிஷத் (விளக்க உரை – எளிய நடையில்)",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "1700"
+								},
+								{
+									"key": "author",
+									"value": "null",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Author Product",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev1}}/api/products/author?author=null&page=1&limit=10",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"author"
+							],
+							"query": [
+								{
+									"key": "author",
+									"value": "null"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBy-Product-Id",
+					"protocolProfileBehavior": {
+						"followRedirects": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev1}}/api/products/3b8201fd-950a-41fc-9156-88b2ba2c0113",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"3b8201fd-950a-41fc-9156-88b2ba2c0113"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBy-Produdct book id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev1}}/api/products/book/1291",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"book",
+								"1291"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBy-image-Product-Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev1}}/api/products/image/87fe7c53-0edf-4642-81ea-467594b88c77",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"image",
+								"87fe7c53-0edf-4642-81ea-467594b88c77"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "azure book id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev1}}/api/products/book/azure/1291",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"book",
+								"azure",
+								"1291"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateExcelData",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev1}}/api/products/updateExcelData",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"updateExcelData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev1}}/api/products/update",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "images",
+			"item": [
+				{
+					"name": "azure book id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cli}}/api/products/book/1038",
+							"host": [
+								"{{cli}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"book",
+								"1038"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload the image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cover\": \"BACK_COVER\",\r\n    \"filePath\": \"D:\\\\steller\\\\back-end\\\\Jaico Publishing House\\\\World Rights\\\\English\\\\Self-Help\\\\Business Management\\\\the20other209920.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cli}}/api/image/upload/1038",
+							"host": [
+								"{{cli}}"
+							],
+							"path": [
+								"api",
+								"image",
+								"upload",
+								"1038"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBy-image-Product-Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev1}}/api/image/show",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"image",
+								"show"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findimages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cli}}/api/image/findimages?bookName=The Other 99 %",
+							"host": [
+								"{{cli}}"
+							],
+							"path": [
+								"api",
+								"image",
+								"findimages"
+							],
+							"query": [
+								{
+									"key": "bookName",
+									"value": "The Other 99 %"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "display",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev1}}/api/image/display/1",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"image",
+								"display",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "add cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"67b462b234517e0a44421feb\",\r\n  \"productId\": \"726d4701-c5dd-4c9e-b6cd-33532f360b92\",\r\n  \"quantity\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/cart/add",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"67c7d5bd3269fc55b1c0e01d\",\r\n    \"productId\": \"18ae6499-2c17-4430-bf0b-916292b5db5f\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/cart/remove",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"remove"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Narmadha Pathipagam",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payment-gateway",
+			"item": [
+				{
+					"name": "create-order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 405,\r\n    \"receipt\": \"test_receipt\",\r\n    \"note\": \"Special instructions or any additional information\",\r\n    \"orderId\": \"67d2be7f100514449f88ad6e\",\r\n    \"userId\": \"67b462b234517e0a44421feb\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/payment/create-order",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								"create-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify-payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"67c7d5bd3269fc55b1c0e01d\",\r\n    \"productId\": \"18ae6499-2c17-4430-bf0b-916292b5db5f\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/payment/verify-payment",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								"verify-payment"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Narmadha Pathipagam",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "payment-success",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev1}}/api/payment/payment",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "place order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"67b462b234517e0a44421feb\",\r\n    \"products\": [\r\n        {\r\n            \"productId\": \"ef94a88f-35a0-48ea-9ece-326c67205320\",\r\n            \"quantity\": 3\r\n        },\r\n        {\r\n            \"productId\": \"3d85cfbc-d414-48c6-b064-c8380c0a988b\",\r\n            \"quantity\": 3\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/orders/place-order",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"place-order"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "2900",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "Sithargal",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Sithargal",
+									"disabled": true
+								},
+								{
+									"key": "publisher",
+									"value": "Jaico Publishing House",
+									"disabled": true
+								},
+								{
+									"key": "author",
+									"value": "Dhaval Bathia",
+									"disabled": true
+								},
+								{
+									"key": "bookName",
+									"value": "Agathiyar Gnanakaviyam 1000",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders by userid",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"67a9db09d19a639220f37857\",\r\n  \"productId\": \"8e4867f4-2108-419a-9aab-6b18f74c4028\",\r\n  \"quantity\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/orders/67a9db09d19a639220f37857",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"67a9db09d19a639220f37857"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "2900",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "Sithargal",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Sithargal",
+									"disabled": true
+								},
+								{
+									"key": "publisher",
+									"value": "Jaico Publishing House",
+									"disabled": true
+								},
+								{
+									"key": "author",
+									"value": "Dhaval Bathia",
+									"disabled": true
+								},
+								{
+									"key": "bookName",
+									"value": "Agathiyar Gnanakaviyam 1000",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{dev1}}/api/orders/67b6c3a7036017fa848a70d1",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"67b6c3a7036017fa848a70d1"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Narmadha Pathipagam",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "add product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookName\": \"Example Book Name\",\r\n    \"tamilName\": \"உதாரண புத்தகப் பெயர்\",\r\n    \"additionalBooks\": \"Additional book name if any\",\r\n    \"tamilNameAdditionalBooks\": \"Additional book name in Tamil\",\r\n    \"author\": \"Author Name\",\r\n    \r\n    \"publisher\": \"Publisher Name\",\r\n    \"category\": \"Category Name\",\r\n    \"subCategory\": \"Subcategory Name\",\r\n    \"language\": \"Language Name\",\r\n    \"description\": \"Book description\",\r\n    \"songsOnlyOrWithExplanation\": \"Songs only or songs with explanation\",\r\n    \"price\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/products",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "2900",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "Sithargal",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Sithargal",
+									"disabled": true
+								},
+								{
+									"key": "publisher",
+									"value": "Jaico Publishing House",
+									"disabled": true
+								},
+								{
+									"key": "author",
+									"value": "Dhaval Bathia",
+									"disabled": true
+								},
+								{
+									"key": "bookName",
+									"value": "Agathiyar Gnanakaviyam 1000",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookName\": \"Example Book Name\",\r\n    \"tamilName\": \"உதாரண புத்தகப் பெயர்\",\r\n    \"additionalBooks\": \"Additional book name if any\",\r\n    \"tamilNameAdditionalBooks\": \"Additional book name in Tamil\",\r\n    \"author\": \"Author Name\",\r\n    \r\n    \"publisher\": \"Publisher Name\",\r\n    \"category\": \"Category Name\",\r\n    \"subCategory\": \"Subcategory Name\",\r\n    \"language\": \"Language Name\",\r\n    \"description\": \"Book description\",\r\n    \"songsOnlyOrWithExplanation\": \"Songs only or songs with explanation\",\r\n    \"price\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/products?limit=10",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "2900",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "Sithargal",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Sithargal",
+									"disabled": true
+								},
+								{
+									"key": "publisher",
+									"value": "Jaico Publishing House",
+									"disabled": true
+								},
+								{
+									"key": "author",
+									"value": "Dhaval Bathia",
+									"disabled": true
+								},
+								{
+									"key": "bookName",
+									"value": "Agathiyar Gnanakaviyam 1000",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{dev1}}/api/products/103650e5-b270-4780-a743-5fa9f10cda21",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"103650e5-b270-4780-a743-5fa9f10cda21"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "2900",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "Sithargal",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Sithargal",
+									"disabled": true
+								},
+								{
+									"key": "publisher",
+									"value": "Jaico Publishing House",
+									"disabled": true
+								},
+								{
+									"key": "author",
+									"value": "Dhaval Bathia",
+									"disabled": true
+								},
+								{
+									"key": "bookName",
+									"value": "Agathiyar Gnanakaviyam 1000",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev}}/api/orders",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"SHIPPED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/orders/status/67c8189aa05c52a20e68b909",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"status",
+								"67c8189aa05c52a20e68b909"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "2900",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "Sithargal",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Sithargal",
+									"disabled": true
+								},
+								{
+									"key": "publisher",
+									"value": "Jaico Publishing House",
+									"disabled": true
+								},
+								{
+									"key": "author",
+									"value": "Dhaval Bathia",
+									"disabled": true
+								},
+								{
+									"key": "bookName",
+									"value": "Agathiyar Gnanakaviyam 1000",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev}}/api/orders/status/PENDING",
+							"host": [
+								"{{dev}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"status",
+								"PENDING"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get order by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"67a9db09d19a639220f37857\",\r\n  \"productId\": \"8e4867f4-2108-419a-9aab-6b18f74c4028\",\r\n  \"quantity\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev1}}/api/orders/details/67c8189aa05c52a20e68b909",
+							"host": [
+								"{{dev1}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"details",
+								"67c8189aa05c52a20e68b909"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "2900",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "Sithargal",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Sithargal",
+									"disabled": true
+								},
+								{
+									"key": "publisher",
+									"value": "Jaico Publishing House",
+									"disabled": true
+								},
+								{
+									"key": "author",
+									"value": "Dhaval Bathia",
+									"disabled": true
+								},
+								{
+									"key": "bookName",
+									"value": "Agathiyar Gnanakaviyam 1000",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQ2MmIyMzQ1MTdlMGE0NDQyMWZlYiIsInVzZXJuYW1lIjoibXV0aGFpeWFzYW5qYXkiLCJlbWFpbCI6Im11dGhhaXlhQHN0ZWxsYXJzb2x1dGlvbnMub3JnIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQxNzg2ODU2LCJleHAiOjE3NTczMzg4NTZ9.9bKd59UtrEUBOCZoWgaqcb4J4dUikCZ1m9M1-QcdvWk",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "dev1",
+			"value": "localhost:3000/v1",
+			"type": "default"
+		},
+		{
+			"key": "dev",
+			"value": "https://ndbooks-d4b4fpgbfdgqh6cx.canadacentral-01.azurewebsites.net/v1",
+			"type": "string"
+		},
+		{
+			"key": "cli",
+			"value": "localhost:4000/v1",
+			"type": "string"
+		}
+	]
+}
